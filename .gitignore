@@ -1,0 +1,18 @@
+# Compiled files and folders
+target/
+**/target/
+
+# Cargo lock file
+Cargo.lock
+**/Cargo.lock
+
+# Backup files
+**/*.rs.bk
+
+# VS Code settings
+.vscode/
+
+# IDE/project settings and temp files
+.idea/
+*.swp
+.DS_Store
