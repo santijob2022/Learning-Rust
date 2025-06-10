@@ -1,6 +1,8 @@
 // Code to make a basic API call
 
-async  fn my_async_call(url: &str) -> Result<serde_json::Value, reqwest::Error>{
+#[cfg(test)]
+mod tests{
+    async  fn my_async_call(url: &str) -> Result<serde_json::Value, reqwest::Error>{
     let response: serde_json::Value = reqwest::get(url)
     .await?
     .json::<serde_json::Value>()
@@ -8,10 +10,6 @@ async  fn my_async_call(url: &str) -> Result<serde_json::Value, reqwest::Error>{
 
     Ok(response)
 }
-
-#[cfg(test)]
-mod tests{
-    use  super::*;
 
     #[tokio::test]
     async fn tests_calls_fn(){
