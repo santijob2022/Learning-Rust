@@ -1,3 +1,4 @@
+// Code to make a basic API call
 
 async  fn my_async_call(url: &str) -> Result<serde_json::Value, reqwest::Error>{
     let response: serde_json::Value = reqwest::get(url)
