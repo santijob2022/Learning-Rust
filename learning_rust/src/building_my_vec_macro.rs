@@ -17,7 +17,7 @@ mod test {
 
     #[test]
     fn tests_macro_my_vec(){
-        let x: Vec<i32> = vec!();
+        let _x: Vec<i32> = vec!();
         let mut y: Vec<i32> = my_vec!(1);
         y.push(3);
         dbg!(y);        
