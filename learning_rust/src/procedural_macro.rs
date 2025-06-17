@@ -2,7 +2,7 @@
 mod tests {
     use ai_func_macro::function_to_string;
 
-    const OUTPUT: &str = "";
+    const _OUTPUT: &str = "";
 
     #[function_to_string]
     fn function_for_ai_llm(_param: &str) {
