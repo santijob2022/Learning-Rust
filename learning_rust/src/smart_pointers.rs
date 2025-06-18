@@ -47,6 +47,45 @@ mod tests {
         dbg!(x);
         dbg!(y);
         
-    }
+    
 
+        #[derive(Debug)]
+        struct  House {
+            address_number: u16,
+            street: String,
+            furniture: RefCell<Vec<Rc<Furniture>>>
+        }
+
+        #[derive(Debug)]
+        struct  Furniture {
+            id: String,
+            description: String,
+            house: Weak<House>
+        }
+
+        let house_1: Rc<House> = Rc::new(House{
+            address_number: 123,
+            street: "elm_street".to_string(),
+            furniture: RefCell::new(vec!())
+        });
+
+        let table: Rc<Furniture> = Rc::new(Furniture{
+            id: "table1".to_string(),
+            description: "leaving room table".to_string(),
+            house: Rc::downgrade(&house_1)
+        });
+
+        let chair = Rc::new(Furniture{
+            id: "chair1".to_string(),
+            description: "office chair".to_string(),
+            house: Rc::downgrade(&house_1)
+        });
+
+        house_1.furniture.borrow_mut().push(Rc::clone(&table));
+        house_1.furniture.borrow_mut().push(Rc::clone(&chair));
+
+        dbg!(house_1);
+
+
+    }
 }
